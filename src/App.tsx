@@ -5,6 +5,11 @@ function App() {
     email: '',
     password: ''
   })
+  const [showWelcome, setShowWelcome] = useState(false)
+
+  React.useEffect(() => {
+    setShowWelcome(true)
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -22,7 +27,13 @@ function App() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black flex items-center justify-center p-4">
       <div className="bg-gray-800 rounded-lg shadow-2xl w-full max-w-md p-8 border border-gray-700">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-white">Welcome Back</h2>
+          <h2
+            className={`text-3xl font-bold text-white transition-all duration-700
+              ${showWelcome ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}
+            `}
+          >
+            Welcome Back
+          </h2>
           <p className="text-gray-400 mt-2">Sign in to your account</p>
         </div>
 
